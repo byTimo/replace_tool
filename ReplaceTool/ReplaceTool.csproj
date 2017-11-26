@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F333939A-360A-480F-9FF0-302F607C92C2}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReplaceTool</RootNamespace>
+    <AssemblyName>ReplaceTool</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArgumentProcessor.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="DirectoryProcessor.cs" />
+    <Compile Include="FileProcessors\ArgScaningFileProcessor.cs" />
+    <Compile Include="FileProcessors\FileProcessingResult.cs" />
+    <Compile Include="FileProcessors\IFileProcessor.cs" />
+    <Compile Include="FileProcessors\ReplaceFileProcessor.cs" />
+    <Compile Include="FileProcessors\ScaningFileProcessor.cs" />
+    <Compile Include="IArgumentProcessor.cs" />
+    <Compile Include="LineProcessors\ILineProcessor.cs" />
+    <Compile Include="LineProcessors\LineProcessingResult.cs" />
+    <Compile Include="LineProcessors\OldFormatLineProcessor.cs" />
+    <Compile Include="LineProcessors\WithDollarLineProcessor.cs" />
+    <Compile Include="LogContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DirectoryProcessingResult.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="Tests\ArgumentProcessorTests.cs" />
+    <Compile Include="Tests\ArgumentTransforming.cs" />
+    <Compile Include="Tests\OldFormatLineProcessorTests.cs" />
+    <Compile Include="Tests\WithDollarLineProcessorTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
